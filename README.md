@@ -5,7 +5,7 @@ Welcome to the official repository for the upcoming work: ByteVideoLLM.
 ByteVideoLLM aims to strike a fine balance between performance and token consumption in video LLM.
 
 ## Features
-In the coming weeks, we will be unveiling the following components:
+In the coming weeks, we will be releasing the following components:
 
 - Data: Approximately 1 million high-quality synthetic data points meticulously gathered by our team for Video QA.
 - Model Checkpoint: Pre-trained model checkpoints of different scales.
