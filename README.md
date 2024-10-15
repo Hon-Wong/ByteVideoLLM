@@ -1,6 +1,11 @@
 # ByteVideoLLM
 Welcome to the official repository for the upcoming work: ByteVideoLLM.
 
+## Release
+
+- [2024/10/15] 🔥 **ByteVideoLLM-14B** is released. Check [[Checkpoint](https://huggingface.co/Hon-Wong/ByteVideoLLM-14B)]!
+  
+
 ## Overview
 ByteVideoLLM aims to strike a fine balance between performance and token consumption in video LLM.
 
