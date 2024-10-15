@@ -29,4 +29,26 @@ Secondly, Refer to `config.sample_config.yaml`, fill the correct data path into 
 deepspeed --master_port={PORT} eval/eval.py --config {YOUR_CONFIG_PATH}
 ```
 
+### Data Preparation
+
+If you want to use your own data, please process it into the following annotation format
+
+```json
+{
+    "source": ,
+    "id": ,
+    "vid": ,
+    "metadata": ,
+    "vqa": [
+      {
+        "from": "human", "value": "[YOUR_QUESTION]"
+      },
+      {
+        "from": "gpt", "value": "[YOUR_ANSWER]"
+      },
+      ...
+    ]
+}
+```
+
 Stay tuned for updates and the release of these valuable resources!
