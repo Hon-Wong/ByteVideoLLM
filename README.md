@@ -26,7 +26,7 @@ Firstly, you need to process the annotations of LaSOT into [json format](#data-p
 Secondly, Refer to `config.sample_config.yaml`, fill the correct data path into `data.predict.data_fetch`, and then start the command.
 
 ```
-deepspeed eval/eval.py --config {YOUR_CONFIG_PATH}
+deepspeed --master_port={PORT} eval/eval.py --config {YOUR_CONFIG_PATH}
 ```
 
 Stay tuned for updates and the release of these valuable resources!
