@@ -1,0 +1,102 @@
+bf16: True
+seed: 42
+num_train_epochs: 1
+per_device_train_batch_size: 1
+per_device_eval_batch_size: 1
+gradient_accumulation_steps: 2
+evaluation_strategy: "no"
+save_strategy: "steps"
+save_steps: 24000000
+save_total_limit: 1
+visual_encoder_lr_scale: 0.1
+learning_rate: 0.000005
+weight_decay: 0.
+warmup_ratio: 0.03
+lr_scheduler_type: "cosine"
+logging_steps: 1
+tf32: True
+gradient_checkpointing: true
+dataloader_num_workers: 4
+report_to: wandb
+run_name: ByteVideoLLM-14B
+output_dir: ByteVideoLLM-14B
+deepspeed: ./configs/zero2.json
+
+
+model:
+  use_visual: true
+  use_flash_attention: false
+  dtype: "bf16"
+  visual:
+    type: "clip_vit_l"
+    img_size: 336
+    drop_path_rate: 0.0
+    use_grad_checkpoint: true
+    pretrained: "models/clip-vit-large-patch14-336"
+    freeze_vit: true
+  adapter:
+    type: "dynamic_spatial_pooling"
+    num_features: 1024
+    out_token_num: 576
+    min_out_token_num: 100
+    max_video_tokens: 3200
+    freeze_adapter: false
+  projector:
+    type: "mlp2x_gelu"
+    input_hidden_size: null
+  llm:
+    pretrained: "models/Qwen2.5-7B-Instruct"
+    from_pretrained_param:
+      attn_implementation: 'flash_attention_2'
+    freeze_llm: false
+    use_lora: false
+  generate_params:
+    do_sample: false
+    top_p: 0.9
+    temperature: 0.9
+    num_beams: 3
+    max_new_tokens: 2048
+    min_length: 1
+    repetition_penalty: 1.0
+    length_penalty: 1.0
+  evaluation:
+    resep: false
+    visualize:
+      enable: true
+      type: coords
+
+data:
+  predict:
+    data_fetch:
+      anno_path: "datasets/videomme/annotations/videomme.json"
+      image_folder: "datasets/videomme_100frames"
+      batch_sizes: [1]
+      num_workers: 8
+      num_readers: [4]
+      key_mapping:
+
+    data_preprocess:
+      with_visual: True
+      frames_key: frames
+      label_key: vqa
+      task_type: vqa
+      sample_method: global
+      max_batch_frames: 100
+      max_frames: 100000
+      training: false
+      tokenizer: "models/Qwen2.5-7B-Instruct"
+      max_seq_len: 2048
+      max_prompt_len: 2048
+      shuffle_vqa: True
+      vqa_processor_params:
+        version: default
+        system_message: "<|im_start|>system\nYou are a helpful assistant.<|im_end|>"
+        roles: ["\n<|im_start|>user\n", "<|im_end|>\n<|im_start|>assistant\n"]
+      verbose: True
+      frames_ops:
+        Resize:
+          size: [336, 336]
+        ToTensor: {}
+        Normalize:
+          mean: [0.48145466, 0.4578275, 0.40821073]
+          std: [0.26862954, 0.26130258, 0.27577711]
