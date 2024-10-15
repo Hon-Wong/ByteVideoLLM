@@ -3,7 +3,7 @@ Welcome to the official repository for the upcoming work: ByteVideoLLM.
 
 ## Release
 
-- [2024/10/15] 🔥 **ByteVideoLLM-14B** is released. Check [[Checkpoint](https://huggingface.co/Hon-Wong/ByteVideoLLM-14B)]!
+- [2024/10/15] 🔥 **ByteVideoLLM-14B** and the inference code are released. Check [[Checkpoint](https://huggingface.co/Hon-Wong/ByteVideoLLM-14B)]!
   
 
 ## Overview
@@ -16,5 +16,17 @@ In the coming weeks, we will be releasing the following components:
 - Model Checkpoint: Pre-trained model checkpoints of different scales.
 - Training Code: Codebase to replicate the experiments conducted.
 We are continuously enhancing the model's performance.
+
+## Inference
+
+We provide the eval script to ensure the reproducibility of our results.
+
+Firstly, you need to process the annotations of LaSOT into [json format](#data-preparation), which is consistent with the format of the training set.
+
+Secondly, Refer to `config.sample_config.yaml`, fill the correct data path into `data.predict.data_fetch`, and then start the command.
+
+```
+deepspeed eval/eval.py --config {YOUR_CONFIG_PATH}
+```
 
 Stay tuned for updates and the release of these valuable resources!
