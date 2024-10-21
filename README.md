@@ -2,10 +2,9 @@
 Welcome to the official repository for the upcoming work: ByteVideoLLM.
 
 ## Release
-
+- [2024/10/21] 🔥 **ByteVideoLLM-14B** achieves 1st performance among 13B/14B models on VideoMME leaderboard, check [[VideoMME](https://video-mme.github.io/home_page.html#leaderboard)]!
 - [2024/10/15] 🔥 **ByteVideoLLM-14B** and the inference code are released. Check [[Checkpoint](https://huggingface.co/Hon-Wong/ByteVideoLLM-14B)]!
   
-
 ## Overview
 ByteVideoLLM aims to strike a fine balance between performance and token consumption in video LLM.
 
