@@ -2,6 +2,7 @@
 Welcome to the official repository for the upcoming work: ByteVideoLLM.
 
 ## Release
+- [2024/12/13] 🔥 [Technical report](https://arxiv.org/abs/2412.09530) is released! We are going to release the training data, new checkpoints and the RFT pipeline for VideoLLM (including data and codes) in the next few weeks.
 - [2024/11/01] 🔥 [Zero-shot task transfer] **ByteVideoLLM-14B** achieves 1st performance among  all open-source models on MMIU, even though we did not utilize any multi-image data (except for video) during training. Check [[MMIU](https://mmiu-bench.github.io/#leaderboard)]!
 - [2024/10/21] 🔥 **ByteVideoLLM-14B** achieves 1st performance among 13B/14B models on VideoMME leaderboard, check [[VideoMME](https://video-mme.github.io/home_page.html#leaderboard)]!
 - [2024/10/15] 🔥 **ByteVideoLLM-14B** and the inference code are released. Check [[Checkpoint](https://huggingface.co/Hon-Wong/ByteVideoLLM-14B)]!
